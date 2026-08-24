@@ -16,7 +16,7 @@
 //   "service_role" key in frontend code — that one bypasses RLS
 //   entirely and must stay server-side / out of the browser.
 
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/[email protected]/+esm';
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
 const SUPABASE_URL = 'https://pooclgsnrvtqorecfunt.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBvb2NsZ3NucnZ0cW9yZWNmdW50Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc1NjEwMDYsImV4cCI6MjEwMzEzNzAwNn0.4sh0gMjYbI3a_4Kfk2J7uhV3j1DxE2C4HBWvzes_TxY';
