@@ -20,9 +20,9 @@ import { supabase } from './supabase.js';
 //   4. Account -> General -> copy your Public Key
 //   5. Paste all three below. The EmailJS SDK script tag is already
 //      included in index.html <head>.
-const EMAILJS_PUBLIC_KEY = '';
-const EMAILJS_SERVICE_ID = '';
-const EMAILJS_TEMPLATE_ID = '';
+const EMAILJS_PUBLIC_KEY = 'TOQi8ZBtP8xjK4PNu';
+const EMAILJS_SERVICE_ID = 'service_2ayb106';
+const EMAILJS_TEMPLATE_ID = 'template_ap1xkzq';
 
 // ---- Element references ---------------------------------------
 const form = document.getElementById('leadForm');
