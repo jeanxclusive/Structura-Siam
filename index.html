@@ -787,8 +787,8 @@
 <!-- OPTIONAL: EmailJS SDK for email notifications on new leads.
      Only needed if you fill in the EMAILJS_* constants in js/contact-form.js.
      Safe to leave in place even if unused — it just won't be called. -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/[email protected]/dist/email.min.js"></script>
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  
 <!-- Lead capture form logic: validation + Supabase insert. Loaded as a module
      because it imports js/supabase.js. -->
 <script type="module" src="/js/contact-form.js"></script>
