@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Structura Siam — Structural Engineering Consultants, Bangkok</title>
+<meta name="description" content="Structural engineering for accommodation buildings, low-rise community malls, and shop buildings in Thailand. Free, no-obligation budget estimate before you commit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #F5EFE2;
+    --cream-2: #ECE3CE;
+    --paper: #FFFDF7;
+    --espresso: #2A2117;
+    --espresso-soft: #4B4030;
+    --olive: #5B6A43;
+    --olive-deep: #3C4730;
+    --olive-light: #A7B18A;
+    --stone: #CBBD9C;
+    --stone-soft: #DCD1B4;
+    --rule: rgba(42,33,23,0.14);
+
+    --display: "Fraunces", Georgia, serif;
+    --body: "IBM Plex Sans", -apple-system, sans-serif;
+    --mono: "IBM Plex Mono", "Courier New", monospace;
+
+    --wrap: 1180px;
+    --edge: clamp(22px, 5vw, 64px);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; } }
+
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--espresso-soft);
+    font-family:var(--body);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* subtle paper grain */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    pointer-events:none;
+    z-index:0;
+    opacity:0.5;
+    background-image:
+      radial-gradient(rgba(42,33,23,0.035) 1px, transparent 1px);
+    background-size:3px 3px;
+  }
+
+  h1,h2,h3,h4{ font-family:var(--display); color:var(--espresso); margin:0; font-weight:600; letter-spacing:-0.01em; }
+  p{ margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  ul{ margin:0; padding:0; list-style:none; }
+  img,svg{ display:block; max-width:100%; }
+
+  .wrap{ max-width:var(--wrap); margin:0 auto; padding-left:var(--edge); padding-right:var(--edge); position:relative; z-index:1; }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--olive-deep);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px; height:1px;
+    background:var(--olive-deep);
+    display:inline-block;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    padding:15px 26px;
+    border-radius:2px;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform 0.18s ease, background 0.18s ease, color 0.18s ease, border-color .18s ease;
+  }
+  .btn-primary{ background:var(--olive-deep); color:var(--cream); }
+  .btn-primary:hover{ background:var(--espresso); transform:translateY(-1px); }
+  .btn-ghost{ background:transparent; color:var(--espresso); border-color:var(--rule); }
+  .btn-ghost:hover{ border-color:var(--espresso); }
+
+  /* ---------- NAV ---------- */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:rgba(245,239,226,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--rule);
+    transition:box-shadow .2s ease;
+  }
+  header.site.scrolled{ box-shadow:0 6px 18px rgba(42,33,23,0.06); }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px var(--edge);
+    max-width:var(--wrap); margin:0 auto;
+  }
+  .wordmark{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:19px;
+    letter-spacing:0.01em;
+    color:var(--espresso);
+    display:flex; flex-direction:column; line-height:1.1;
+  }
+  .wordmark small{
+    font-family:var(--mono); font-size:9.5px; letter-spacing:0.14em;
+    color:var(--olive-deep); font-weight:500; margin-top:3px;
+  }
+  .nav-links{ display:flex; align-items:center; gap:36px; }
+  .nav-links a{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:0.03em;
+    text-transform:uppercase; color:var(--espresso-soft);
+    position:relative; padding-bottom:3px;
+  }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:0; height:1px; width:0;
+    background:var(--olive-deep); transition:width .2s ease;
+  }
+  .nav-links a:hover::after{ width:100%; }
+  .nav-cta{ display:flex; align-items:center; gap:22px; }
+  .burger{ display:none; background:none; border:none; cursor:pointer; padding:6px; }
+  .burger span{ display:block; width:22px; height:2px; background:var(--espresso); margin:5px 0; }
+
+  @media (max-width:880px){
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; align-items:flex-start; gap:0;
+      background:var(--paper); border-bottom:1px solid var(--rule);
+      max-height:0; overflow:hidden; transition:max-height .25s ease;
+    }
+    .nav-links.open{ max-height:320px; }
+    .nav-links a{ padding:16px var(--edge); width:100%; border-top:1px solid var(--rule); }
+    .burger{ display:block; }
+    .nav-cta .btn-ghost{ display:none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:76px 0 40px; }
+  .hero-grid{
+    display:grid; grid-template-columns:1.02fr 0.98fr; gap:56px; align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(34px, 4.6vw, 54px);
+    line-height:1.08;
+    margin-top:20px;
+    max-width:15ch;
+  }
+  .hero h1 em{ font-style:italic; color:var(--olive-deep); }
+  .hero-sub{
+    margin-top:22px; font-size:17px; color:var(--espresso-soft);
+    max-width:46ch; line-height:1.65;
+  }
+  .hero-actions{ margin-top:32px; display:flex; flex-wrap:wrap; align-items:center; gap:22px; }
+  .hero-actions .link-scroll{
+    font-family:var(--mono); font-size:12.5px; text-transform:uppercase; letter-spacing:0.03em;
+    border-bottom:1px solid var(--rule); padding-bottom:2px;
+  }
+  .trust-row{
+    margin-top:34px; display:flex; flex-wrap:wrap; gap:22px;
+    font-family:var(--mono); font-size:11.5px; letter-spacing:0.02em; color:var(--olive-deep);
+  }
+  .trust-row span{ display:flex; align-items:center; gap:7px; }
+  .trust-row span::before{ content:""; width:5px; height:5px; border-radius:50%; background:var(--olive); }
+
+  .hero-art{ position:relative; }
+  .hero-art .plate{
+    background:var(--paper);
+    border:1px solid var(--rule);
+    padding:22px 18px 16px;
+    box-shadow:0 24px 46px -30px rgba(42,33,23,0.35);
+  }
+  .hero-art .plate-cap{
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--olive-deep); margin-bottom:10px; border-bottom:1px dashed var(--rule); padding-bottom:10px;
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  .section{ padding:96px 0; position:relative; }
+  .section-head{ max-width:640px; margin-bottom:56px; }
+  .section-head h2{ font-size:clamp(26px,3.2vw,38px); margin-top:16px; line-height:1.15; }
+  .section-head p.lead{ margin-top:16px; font-size:16px; color:var(--espresso-soft); max-width:52ch; }
+
+  .dark{ background:var(--espresso); color:var(--cream-2); }
+  .dark .eyebrow{ color:var(--olive-light); }
+  .dark .eyebrow::before{ background:var(--olive-light); }
+  .dark h2, .dark h3{ color:var(--cream); }
+  .dark p{ color:rgba(236,227,206,0.78); }
+
+  .alt{ background:var(--cream-2); }
+
+  /* ---------- UNDERSTANDING SECTION ---------- */
+  .empathy-list{ display:grid; gap:0; margin-top:44px; border-top:1px solid rgba(236,227,206,0.18); }
+  .empathy-item{
+    display:grid; grid-template-columns:64px 1fr; gap:24px;
+    padding:26px 0; border-bottom:1px solid rgba(236,227,206,0.18);
+  }
+  .empathy-item .mk{ font-family:var(--mono); font-size:12px; color:var(--olive-light); padding-top:3px; }
+  .empathy-item p{ font-size:17px; color:rgba(236,227,206,0.9); max-width:56ch; line-height:1.6; }
+  .bridge-line{
+    margin-top:40px; font-family:var(--display); font-style:italic; font-size:21px;
+    color:var(--cream); border-left:2px solid var(--olive-light); padding-left:18px;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .service-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); }
+  .service-card{ background:var(--cream); padding:38px 32px; }
+  .service-card .num{ font-family:var(--mono); font-size:12px; color:var(--olive-deep); }
+  .service-card h3{ font-size:21px; margin-top:22px; line-height:1.25; }
+  .service-card p{ margin-top:14px; font-size:15px; color:var(--espresso-soft); line-height:1.65; }
+  .service-card .icon{ margin-top:6px; }
+  @media (max-width:880px){ .service-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- STEPS ---------- */
+  .steps{ margin-top:50px; display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative; }
+  .steps::before{
+    content:""; position:absolute; top:17px; left:0; right:0; height:1px;
+    background:var(--stone); display:block;
+  }
+  @media (max-width:880px){ .steps::before{ display:none; } .steps{ grid-template-columns:1fr; gap:36px; } }
+  .step{ padding-right:24px; position:relative; }
+  .step .step-num{
+    width:35px; height:35px; border-radius:50%;
+    background:var(--cream-2); border:1px solid var(--stone);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:13px; color:var(--olive-deep);
+    position:relative; z-index:1;
+  }
+  .step h4{ font-size:16.5px; margin-top:20px; }
+  .step p{ margin-top:10px; font-size:14.5px; color:var(--espresso-soft); line-height:1.6; }
+  .steps-cta{ margin-top:52px; display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+  .steps-cta p{ font-family:var(--mono); font-size:12.5px; color:var(--olive-deep); }
+
+  /* ---------- COMPARISON ---------- */
+  .compare{ margin-top:50px; border-top:1px solid var(--rule); }
+  .compare-row{
+    display:grid; grid-template-columns:1fr 1fr 1fr; gap:0;
+    border-bottom:1px solid var(--rule);
+  }
+  .compare-row.headrow{ font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--olive-deep); }
+  .compare-row > div{ padding:20px 22px; }
+  .compare-row > div:first-child{ font-family:var(--mono); font-size:12.5px; color:var(--espresso-soft); background:var(--cream-2); }
+  .compare-row .no{ color:#8b7d63; font-size:14.5px; }
+  .compare-row .yes{ color:var(--espresso); font-size:14.5px; font-weight:500; position:relative; padding-left:32px; }
+  .compare-row .yes::before{ content:"✓"; position:absolute; left:0; top:19px; color:var(--olive-deep); font-family:var(--mono); }
+  @media (max-width:720px){
+    .compare-row{ grid-template-columns:1fr; }
+    .compare-row > div:first-child{ padding-bottom:8px; }
+  }
+
+  /* ---------- CARE ---------- */
+  .care-wrap{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:start; }
+  .care-tags{ display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+  .care-tags span{
+    font-family:var(--mono); font-size:11.5px; letter-spacing:0.03em; text-transform:uppercase;
+    border:1px solid rgba(236,227,206,0.3); color:var(--cream-2); padding:9px 14px;
+  }
+  .care-mark{ border:1px solid rgba(236,227,206,0.22); padding:28px; font-family:var(--mono); font-size:12.5px; color:rgba(236,227,206,0.75); line-height:2; }
+  .care-mark b{ color:var(--cream); display:block; font-family:var(--display); font-size:15px; font-style:italic; margin-bottom:14px; }
+  @media (max-width:880px){ .care-wrap{ grid-template-columns:1fr; } }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{ display:grid; grid-template-columns:1.15fr 0.85fr; gap:60px; }
+  form.project-form{ background:var(--paper); border:1px solid var(--rule); padding:36px; }
+  .field{ margin-bottom:22px; }
+  .field label{ display:block; font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--olive-deep); margin-bottom:8px; }
+  .field input, .field select, .field textarea{
+    width:100%; border:none; border-bottom:1px solid var(--rule); background:transparent;
+    padding:10px 2px; font-family:var(--body); font-size:15px; color:var(--espresso);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{ outline:none; border-bottom-color:var(--olive-deep); }
+  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  @media (max-width:600px){ .field-row{ grid-template-columns:1fr; } }
+  textarea{ resize:vertical; min-height:96px; }
+  .field label .req{ color:#8A3B2E; margin-left:2px; }
+  .field.invalid input, .field.invalid select, .field.invalid textarea{ border-bottom-color:#8A3B2E; }
+  .form-foot{ display:flex; align-items:center; gap:18px; margin-top:8px; flex-wrap:wrap; }
+  .form-note{ font-family:var(--mono); font-size:11.5px; color:var(--espresso-soft); }
+  button[disabled]{ opacity:0.6; cursor:not-allowed; }
+
+  .status-msg{
+    display:none; margin-top:18px; padding:13px 16px;
+    font-family:var(--mono); font-size:12.5px; line-height:1.6;
+    border:1px solid var(--rule);
+  }
+  .status-msg.show{ display:block; }
+  .status-msg.loading{ color:var(--espresso-soft); border-color:var(--rule); background:transparent; }
+  .status-msg.success{ color:var(--olive-deep); border-color:var(--olive); background:rgba(91,106,67,0.07); }
+  .status-msg.error{ color:#8A3B2E; border-color:#C0846F; background:rgba(192,132,111,0.09); }
+
+  .contact-aside{ display:flex; flex-direction:column; gap:28px; }
+  .aside-block{ border-top:1px solid var(--rule); padding-top:18px; }
+  .aside-block .eyebrow{ margin-bottom:10px; }
+  .aside-block p, .aside-block a{ font-size:15px; color:var(--espresso); line-height:1.7; }
+  .aside-block .placeholder-note{ font-family:var(--mono); font-size:10.5px; color:#9a8c6f; margin-top:4px; display:block; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ background:var(--espresso); color:rgba(236,227,206,0.65); padding:60px 0 30px; }
+  .footer-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:40px; flex-wrap:wrap; padding-bottom:40px; border-bottom:1px solid rgba(236,227,206,0.14); }
+  .footer-top .wordmark{ color:var(--cream); }
+  .footer-top .wordmark small{ color:var(--olive-light); }
+  .footer-links{ display:flex; gap:44px; flex-wrap:wrap; }
+  .footer-links div h5{ font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--olive-light); margin:0 0 14px; font-weight:500; }
+  .footer-links a{ display:block; font-size:14px; margin-bottom:9px; color:rgba(236,227,206,0.72); }
+  .footer-bottom{ display:flex; justify-content:space-between; padding-top:24px; font-family:var(--mono); font-size:11px; color:rgba(236,227,206,0.45); flex-wrap:wrap; gap:10px; }
+
+  /* reveal */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  .ground-divider{ height:34px; }
+</style>
+</head>
+<body>
+
+<header class="site" id="siteHeader">
+  <div class="nav-row">
+    <a href="#top" class="wordmark">STRUCTURA SIAM<small>STRUCTURAL ENGINEERING CONSULTANTS</small></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#why-us">Why Us</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-ghost">Get Free Estimate</a>
+      <button class="burger" id="burgerBtn" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Structural Engineering Consultants — Bangkok</span>
+        <h1>Structural engineering built for your project. <em>Priced before you commit.</em></h1>
+        <p class="hero-sub">We design the structure for accommodation buildings, low-rise community malls, and shop buildings across Thailand — with a senior engineer on the line, and a real budget number before you sign anything.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Drop Your Project Details →</a>
+          <a href="#how-it-works" class="link-scroll">See how Friendly Budget works ↓</a>
+        </div>
+        <div class="trust-row">
+          <span>No obligation</span>
+          <span>Reply within 2 business days</span>
+          <span>English &amp; Thai</span>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <div class="plate">
+          <div class="plate-cap"><span>Elevation — Typ. Low-Rise</span><span>Scale 1:100</span></div>
+          <!-- Signature technical elevation illustration -->
+          <svg viewBox="0 0 640 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Annotated line drawing of a low-rise building elevation with structural callouts">
+            <defs>
+              <marker id="arrowEnd" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                <path d="M0,0 L6,3 L0,6 Z" fill="#5B6A43"/>
+              </marker>
+            </defs>
+
+            <!-- compass -->
+            <g transform="translate(52,46)" stroke="#5B6A43" stroke-width="1.4" fill="none">
+              <circle r="16" />
+              <line x1="0" y1="-16" x2="0" y2="16" />
+              <line x1="-16" y1="0" x2="16" y2="0" />
+              <polygon points="0,-16 -4,-7 4,-7" fill="#5B6A43" stroke="none"/>
+              <text x="0" y="-22" text-anchor="middle" font-family="IBM Plex Mono" font-size="10" fill="#4B4030" stroke="none">N</text>
+            </g>
+
+            <!-- ground line -->
+            <line x1="40" y1="440" x2="600" y2="440" stroke="#2A2117" stroke-width="1.6"/>
+            <!-- foundation hatching -->
+            <g stroke="#5B6A43" stroke-width="1">
+              <line x1="150" y1="440" x2="140" y2="458"/>
+              <line x1="170" y1="440" x2="160" y2="458"/>
+              <line x1="190" y1="440" x2="180" y2="458"/>
+              <line x1="210" y1="440" x2="200" y2="458"/>
+              <line x1="230" y1="440" x2="220" y2="458"/>
+              <line x1="250" y1="440" x2="240" y2="458"/>
+              <line x1="270" y1="440" x2="260" y2="458"/>
+              <line x1="290" y1="440" x2="280" y2="458"/>
+              <line x1="310" y1="440" x2="300" y2="458"/>
+              <line x1="330" y1="440" x2="320" y2="458"/>
+              <line x1="350" y1="440" x2="340" y2="458"/>
+              <line x1="370" y1="440" x2="360" y2="458"/>
+              <line x1="390" y1="440" x2="380" y2="458"/>
+              <line x1="410" y1="440" x2="400" y2="458"/>
+            </g>
+
+            <!-- building body -->
+            <rect x="140" y="120" width="280" height="320" fill="#FFFDF7" stroke="#2A2117" stroke-width="1.8"/>
+
+            <!-- floor lines -->
+            <g stroke="#CBBD9C" stroke-width="1">
+              <line x1="140" y1="200" x2="420" y2="200"/>
+              <line x1="140" y1="280" x2="420" y2="280"/>
+              <line x1="140" y1="360" x2="420" y2="360"/>
+            </g>
+
+            <!-- shear wall core band -->
+            <rect x="255" y="120" width="30" height="320" fill="#EDE6D3" stroke="#5B6A43" stroke-width="1"/>
+
+            <!-- windows per floor -->
+            <g fill="#DCE0CB" stroke="#5B6A43" stroke-width="1">
+              <!-- floor 1 (top, roof level) -->
+              <rect x="158" y="140" width="26" height="34"/>
+              <rect x="200" y="140" width="26" height="34"/>
+              <rect x="336" y="140" width="26" height="34"/>
+              <rect x="378" y="140" width="26" height="34"/>
+              <!-- floor 2 -->
+              <rect x="158" y="220" width="26" height="34"/>
+              <rect x="200" y="220" width="26" height="34"/>
+              <rect x="336" y="220" width="26" height="34"/>
+              <rect x="378" y="220" width="26" height="34"/>
+              <!-- floor 3 -->
+              <rect x="158" y="300" width="26" height="34"/>
+              <rect x="200" y="300" width="26" height="34"/>
+              <rect x="336" y="300" width="26" height="34"/>
+              <rect x="378" y="300" width="26" height="34"/>
+              <!-- ground floor (entrance, wider openings) -->
+              <rect x="158" y="380" width="40" height="46"/>
+              <rect x="364" y="380" width="40" height="46"/>
+            </g>
+            <!-- entrance door -->
+            <rect x="266" y="392" width="24" height="48" fill="#A7B18A" stroke="#5B6A43" stroke-width="1"/>
+
+            <!-- parapet / roofline cap -->
+            <rect x="134" y="112" width="292" height="8" fill="#2A2117"/>
+
+            <!-- dimension line: overall height -->
+            <line x1="452" y1="120" x2="452" y2="440" stroke="#5B6A43" stroke-width="1" marker-start="url(#arrowEnd)" marker-end="url(#arrowEnd)"/>
+            <line x1="444" y1="120" x2="460" y2="120" stroke="#5B6A43" stroke-width="1"/>
+            <line x1="444" y1="440" x2="460" y2="440" stroke="#5B6A43" stroke-width="1"/>
+            <text x="470" y="284" font-family="IBM Plex Mono" font-size="11" fill="#4B4030" transform="rotate(90 470 284)">HEIGHT — 12.0 M TYP.</text>
+
+            <!-- callout: reinforced footing -->
+            <line x1="185" y1="452" x2="130" y2="480" stroke="#5B6A43" stroke-width="1"/>
+            <circle cx="185" cy="452" r="2.4" fill="#5B6A43"/>
+            <text x="66" y="484" font-family="IBM Plex Mono" font-size="10.5" fill="#4B4030">REINFORCED FOOTING</text>
+
+            <!-- callout: shear wall core -->
+            <line x1="270" y1="180" x2="270" y2="70" stroke="#5B6A43" stroke-width="1"/>
+            <circle cx="270" cy="180" r="2.4" fill="#5B6A43"/>
+            <text x="205" y="62" font-family="IBM Plex Mono" font-size="10.5" fill="#4B4030">SHEAR WALL CORE</text>
+
+            <!-- callout: slab -->
+            <line x1="420" y1="280" x2="500" y2="240" stroke="#5B6A43" stroke-width="1"/>
+            <circle cx="420" cy="280" r="2.4" fill="#5B6A43"/>
+            <text x="486" y="232" font-family="IBM Plex Mono" font-size="10.5" fill="#4B4030">150MM SLAB, TYP.</text>
+
+            <!-- scale bar -->
+            <g transform="translate(60,470)">
+              <line x1="0" y1="0" x2="80" y2="0" stroke="#2A2117" stroke-width="1.5"/>
+              <line x1="0" y1="-4" x2="0" y2="4" stroke="#2A2117" stroke-width="1.5"/>
+              <line x1="40" y1="-4" x2="40" y2="4" stroke="#2A2117" stroke-width="1.5"/>
+              <line x1="80" y1="-4" x2="80" y2="4" stroke="#2A2117" stroke-width="1.5"/>
+              <text x="0" y="16" font-family="IBM Plex Mono" font-size="9" fill="#4B4030">0</text>
+              <text x="70" y="16" font-family="IBM Plex Mono" font-size="9" fill="#4B4030">5M</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div style="border-top:1px solid var(--rule);"></div></div>
+
+  <!-- UNDERSTANDING / EMPATHY -->
+  <section class="section dark reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">If This Sounds Familiar</span>
+        <h2>Building here, from wherever you're calling home.</h2>
+      </div>
+      <div class="empathy-list">
+        <div class="empathy-item">
+          <span class="mk">01</span>
+          <p>You've heard the stories — a quote that quietly grows once the contract's already signed.</p>
+        </div>
+        <div class="empathy-item">
+          <span class="mk">02</span>
+          <p>You don't want to pay mega-firm overhead for a four-unit apartment building or a row of shophouses.</p>
+        </div>
+        <div class="empathy-item">
+          <span class="mk">03</span>
+          <p>You need someone to explain Thai building code in plain terms — not just ask you to trust the process.</p>
+        </div>
+      </div>
+      <p class="bridge-line">That's the firm we built.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">What We Design</span>
+        <h2>Three building types. One team that knows them well.</h2>
+        <p class="lead">We don't chase mega-towers. Staying focused means our pricing, our timelines, and our attention are all sized correctly for your project.</p>
+      </div>
+      <div class="service-grid reveal">
+        <div class="service-card">
+          <span class="num">01 / Accommodation</span>
+          <h3>Accommodation Buildings</h3>
+          <p>Apartments, serviced residences, and small condominiums — structural systems sized correctly for low- to mid-rise living, from foundation to roof.</p>
+        </div>
+        <div class="service-card">
+          <span class="num">02 / Retail</span>
+          <h3>Low-Rise Community Malls</h3>
+          <p>Retail and F&amp;B developments engineered for real foot traffic and long-term flexibility, not just the minimum the code allows.</p>
+        </div>
+        <div class="service-card">
+          <span class="num">03 / Commercial</span>
+          <h3>Shop Buildings</h3>
+          <p>Townhomes, shophouses, and standalone commercial units — the backbone of everyday Thai commerce, engineered properly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section alt" id="how-it-works">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Friendly Budget — Free, No Obligation</span>
+        <h2>See the number before you decide anything.</h2>
+        <p class="lead">Drop your project into the message box below. No fee, no pressure — just a real estimated investment range from a senior engineer, so you know what you're working with before you commit.</p>
+      </div>
+      <div class="steps reveal">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h4>Tell us about your project</h4>
+          <p>Drop your project information in the message box — location, size, building type, whatever you have on hand.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h4>We call you back</h4>
+          <p>A senior engineer reviews it personally and reaches out, usually within two business days.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h4>You get a real estimate</h4>
+          <p>An honest, ballpark investment range for your structural design scope — grounded in your project, not a generic rate card.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h4>We decide together</h4>
+          <p>If it fits, we scope the engagement together. If it doesn't, you still walk away with a clearer number.</p>
+        </div>
+      </div>
+      <div class="steps-cta reveal">
+        <a href="#contact" class="btn btn-primary">Start With Your Free Estimate →</a>
+        <p>Most owners hear back in 1–2 business days.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="section" id="why-us">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Why Owners Choose Us on Purpose</span>
+        <h2>A small firm, by design — not by limitation.</h2>
+        <p class="lead">Bigger isn't automatically safer. For a project your size, it often just means more overhead sitting between you and your engineer.</p>
+      </div>
+      <div class="compare reveal">
+        <div class="compare-row headrow">
+          <div></div>
+          <div>Typical Large Firm</div>
+          <div>Structura Siam</div>
+        </div>
+        <div class="compare-row">
+          <div>Who you reach</div>
+          <div class="no">Routed through junior staff and account managers</div>
+          <div class="yes">Direct to the senior engineer on your project</div>
+        </div>
+        <div class="compare-row">
+          <div>Pricing</div>
+          <div class="no">Bundled into a large retainer, quoted after commitment</div>
+          <div class="yes">Scoped and estimated for free, before you sign anything</div>
+        </div>
+        <div class="compare-row">
+          <div>Project fit</div>
+          <div class="no">Built and priced for mega-scale developments</div>
+          <div class="yes">Built specifically for accommodation, retail, and shop buildings</div>
+        </div>
+        <div class="compare-row">
+          <div>Communication</div>
+          <div class="no">Formal, slow, often one language</div>
+          <div class="yes">English &amp; Thai, direct by call, email, or LINE</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FULL OF CARE -->
+  <section class="section dark">
+    <div class="wrap care-wrap">
+      <div class="reveal">
+        <span class="eyebrow">How We Work</span>
+        <h2>Full service. Full of care.</h2>
+        <p style="margin-top:20px; font-size:17px; max-width:52ch; line-height:1.7;">We're a small studio, and we like it that way. A three-unit apartment building or a neighborhood shophouse row gets the same senior attention, the same code diligence, and the same plain-language explanations we'd want if we were building somewhere unfamiliar ourselves.</p>
+        <div class="care-tags">
+          <span>Licensed Thai engineers</span>
+          <span>Bilingual coordination</span>
+          <span>Permit-ready documentation</span>
+        </div>
+      </div>
+      <div class="care-mark reveal">
+        <b>“Resolve the complicated with the simple, honest solution.”</b>
+        FOUNDED ON —<br>
+        Local code fluency<br>
+        International design standards<br>
+        Transparent, upfront pricing<br>
+        One point of contact, start to finish
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section alt" id="contact">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Get Started</span>
+        <h2>Tell us what you're building.</h2>
+        <p class="lead">Drop your project details below — location, size, timeline, whatever you know. We'll come back with a real, no-obligation estimate.</p>
+      </div>
+
+      <div class="contact-grid reveal">
+        <!--
+          Lead capture form. Submission is handled entirely by /js/contact-form.js,
+          which validates the fields marked required (*), inserts the row into the
+          Supabase "enquiries" table, and updates #formStatus with the result.
+          Do not add a `action`/`method` attribute — submission is JS-driven, not a
+          normal HTML form post.
+        -->
+        <form class="project-form" id="leadForm" novalidate>
+
+          <!-- Honeypot spam trap: hidden from real visitors, bots often fill it in.
+               If this has a value on submit, contact-form.js silently drops the submission. -->
+          <div style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true">
+            <label for="company_website">Leave this field empty</label>
+            <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="field-row">
+            <div class="field" id="field-full_name">
+              <label for="full_name">Full name<span class="req">*</span></label>
+              <input type="text" id="full_name" name="full_name">
+            </div>
+            <div class="field" id="field-email">
+              <label for="email">Email<span class="req">*</span></label>
+              <input type="email" id="email" name="email">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field" id="field-phone">
+              <label for="phone">Phone number<span class="req">*</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="+66 or your home country code">
+            </div>
+            <div class="field" id="field-business_name">
+              <label for="business_name">Business name</label>
+              <input type="text" id="business_name" name="business_name" placeholder="Optional">
+            </div>
+          </div>
+          <div class="field" id="field-service_interested">
+            <label for="service_interested">Service interested in<span class="req">*</span></label>
+            <select id="service_interested" name="service_interested">
+              <option value="">Select one</option>
+              <option value="Accommodation building">Accommodation building</option>
+              <option value="Low-rise community mall">Low-rise community mall</option>
+              <option value="Shop building">Shop building</option>
+              <option value="Not sure yet">Not sure yet</option>
+            </select>
+          </div>
+          <div class="field" id="field-message">
+            <label for="message">Project information<span class="req">*</span></label>
+            <textarea id="message" name="message" placeholder="Land size, building size, number of units or floors, rough timeline — whatever you have."></textarea>
+          </div>
+          <div class="form-foot">
+            <button type="submit" class="btn btn-primary" id="leadSubmitBtn">Send Project Details →</button>
+            <span class="form-note">No obligation. We reply within 2 business days.</span>
+          </div>
+          <p class="status-msg" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="contact-aside">
+          <div class="aside-block">
+            <span class="eyebrow">Office</span>
+            <p>Structura Siam<br>Ari, Phaya Thai, Bangkok 10400
+              <span class="placeholder-note">— placeholder address, replace with real office details</span>
+            </p>
+          </div>
+          <div class="aside-block">
+            <span class="eyebrow">Direct</span>
+            <p>
+              <a href="mailto:[email protected]">[email protected]</a><br>
+              <a href="tel:+66612345678">+66 6 1234 5678</a><br>
+              LINE — @structurasiam
+              <span class="placeholder-note">— placeholder contact info, replace before launch</span>
+            </p>
+          </div>
+          <div class="aside-block">
+            <span class="eyebrow">Hours</span>
+            <p>Monday – Friday, 9:00–18:00<br>Saturday by appointment</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <a href="#top" class="wordmark">STRUCTURA SIAM<small>STRUCTURAL ENGINEERING CONSULTANTS</small></a>
+      <div class="footer-links">
+        <div>
+          <h5>Studio</h5>
+          <a href="#services">Services</a>
+          <a href="#how-it-works">Friendly Budget</a>
+          <a href="#why-us">Why Us</a>
+        </div>
+        <div>
+          <h5>Get in touch</h5>
+          <a href="#contact">Free estimate</a>
+          <a href="mailto:[email protected]">Email us</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Structura Siam. Structural engineering consultants, Bangkok, Thailand.</span>
+      <span>Licensed engineers · Thai &amp; English</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // header shadow on scroll
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 8);
+  });
+
+  // mobile nav toggle
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+
+</script>
+
+<!-- OPTIONAL: EmailJS SDK for email notifications on new leads.
+     Only needed if you fill in the EMAILJS_* constants in js/contact-form.js.
+     Safe to leave in place even if unused — it just won't be called. -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/[email protected]/dist/email.min.js"></script>
+
+<!-- Lead capture form logic: validation + Supabase insert. Loaded as a module
+     because it imports js/supabase.js. -->
+<script type="module" src="/js/contact-form.js"></script>
+
+</body>
+</html>
