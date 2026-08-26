@@ -252,21 +252,25 @@
   .steps-cta p{ font-family:var(--mono); font-size:12.5px; color:var(--olive-deep); }
 
   /* ---------- COMPARISON ---------- */
-  .compare{ margin-top:50px; border-top:1px solid var(--rule); }
-  .compare-row{
-    display:grid; grid-template-columns:1fr 1fr 1fr; gap:0;
-    border-bottom:1px solid var(--rule);
-  }
-  .compare-row.headrow{ font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--olive-deep); }
-  .compare-row > div{ padding:20px 22px; }
-  .compare-row > div:first-child{ font-family:var(--mono); font-size:12.5px; color:var(--espresso-soft); background:var(--cream-2); }
-  .compare-row .no{ color:#8b7d63; font-size:14.5px; }
-  .compare-row .yes{ color:var(--espresso); font-size:14.5px; font-weight:500; position:relative; padding-left:32px; }
-  .compare-row .yes::before{ content:"✓"; position:absolute; left:0; top:19px; color:var(--olive-deep); font-family:var(--mono); }
-  @media (max-width:720px){
-    .compare-row{ grid-template-columns:1fr; }
-    .compare-row > div:first-child{ padding-bottom:8px; }
-  }
+.compare{ 
+  margin-top:50px; 
+  border-top:1px solid var(--rule); 
+  overflow-x:auto; 
+  -webkit-overflow-scrolling:touch;
+}
+.compare-row{
+  display:grid; 
+  grid-template-columns:180px 1fr 1fr; 
+  min-width:620px;
+  gap:0;
+  border-bottom:1px solid var(--rule);
+}
+.compare-row.headrow{ font-family:var(--mono); font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--olive-deep); }
+.compare-row > div{ padding:20px 22px; }
+.compare-row > div:first-child{ font-family:var(--mono); font-size:12.5px; color:var(--espresso-soft); background:var(--cream-2); }
+.compare-row .no{ color:#8b7d63; font-size:14.5px; }
+.compare-row .yes{ color:var(--espresso); font-size:14.5px; font-weight:500; position:relative; padding-left:32px; }
+.compare-row .yes::before{ content:"✓"; position:absolute; left:0; top:19px; color:var(--olive-deep); font-family:var(--mono); }
 
   /* ---------- CARE ---------- */
   .care-wrap{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:start; }
@@ -281,6 +285,10 @@
 
   /* ---------- CONTACT ---------- */
   .contact-grid{ display:grid; grid-template-columns:1.15fr 0.85fr; gap:60px; }
+@media (max-width:880px){
+  .contact-grid{ grid-template-columns:1fr; gap:40px; }
+  form.project-form{ padding:24px 18px; }
+}
   form.project-form{ background:var(--paper); border:1px solid var(--rule); padding:36px; }
   .field{ margin-bottom:22px; }
   .field label{ display:block; font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--olive-deep); margin-bottom:8px; }
